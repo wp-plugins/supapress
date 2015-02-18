@@ -41,6 +41,6 @@ define( 'SUPAPRESS_PLUGIN_URL', untrailingslashit( plugins_url( '', __FILE__ ) )
 
 define( 'SUPAPRESS_DEFAULT_SERVICE_URL', 'http://folioservices.lb.supadu.com/' );
 
-define( 'SUPAPRESS_DEFAULT_SERVICE_API', '29b531208ee87a8e132deecdfdb209e6' );
+define( 'SUPAPRESS_DEFAULT_SERVICE_API', '29b531208' );
 
 require_once SUPAPRESS_PLUGIN_DIR . '/settings.php';
