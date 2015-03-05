@@ -9,59 +9,68 @@ div.supapress #isbn-grid > div {
 	text-align: center;
 }
 
-div.supapress #isbn-grid > div:nth-child(4n+1) {
+div.supapress #isbn-grid.per-row-6 > div:nth-child(6n+1),
+div.supapress #isbn-grid.per-row-4 > div:nth-child(4n+1),
+div.supapress #isbn-grid.per-row-3 > div:nth-child(3n+1),
+div.supapress #isbn-grid.per-row-2 > div:nth-child(2n+1),
+div.supapress #isbn-grid.per-row-1 > div:nth-child(1n+1) {
     clear: left;
 }
 
-div.supapress #isbn-grid div img {
-	margin: auto;
+div.supapress #isbn-grid div.image-wrapper {
+    position: relative;
 }
 
-div.supapress .l-2,
-div.supapress .l-3,
-div.supapress .l-4,
-div.supapress .m-6,
-div.supapress .l-6,
-div.supapress .l-8,
-div.supapress .l-9,
-div.supapress .s-12,
-div.supapress .l-12 {
+div.supapress #isbn-grid div img {
+    height: auto;
+	margin: auto;
+    max-width: 100%;
+    width: 100%;
+}
+
+div.supapress #isbn-grid div img.baselined {
+    bottom: 0;
+    left: 0;
+    position: absolute;
+}
+
+div.supapress .book-wrapper {
 	float: left;
 	position: relative;
 }
 
-div.supapress .l-2 {
+div.supapress .per-row-6 .book-wrapper {
 	width: 16.66667%;
 }
 
-div.supapress .l-3 {
+div.supapress .per-row-4 .book-wrapper {
 	width: 25%;
 }
 
-div.supapress .l-4 {
+div.supapress .per-row-3 .book-wrapper {
 	width: 33.33333%;
 }
 
-div.supapress .l-6 {
+div.supapress .per-row-2 .book-wrapper {
 	width: 50%;
 }
 
-div.supapress .l-8 {
-	width: 66.66667%;
-}
-
-div.supapress .l-9 {
-	width: 75%;
-}
-
-div.supapress .l-12 {
+div.supapress .per-row-1 .book-wrapper {
 	width: 100%;
 }
 
 @media screen and (max-width: 720px) {
-	div.supapress .m-6 {
+	div.supapress .per-row-6 .book-wrapper,
+    div.supapress .per-row-4 .book-wrapper,
+    div.supapress .per-row-3 .book-wrapper {
 		width: 50%;
 	}
+
+    div.supapress #isbn-grid.per-row-6 > div:nth-child(6n+1),
+    div.supapress #isbn-grid.per-row-4 > div:nth-child(4n+1),
+    div.supapress #isbn-grid.per-row-3 > div:nth-child(3n+1) {
+        clear: none;
+    }
 
     div.supapress #isbn-grid > div:nth-child(2n+1) {
         clear: left;
@@ -69,9 +78,20 @@ div.supapress .l-12 {
 }
 
 @media screen and (max-width: 480px) {
-	div.supapress .s-12 {
+    div.supapress .per-row-6 .book-wrapper,
+    div.supapress .per-row-4 .book-wrapper,
+    div.supapress .per-row-3 .book-wrapper,
+    div.supapress .per-row-2 .book-wrapper,
+    div.supapress .per-row-1 .book-wrapper  {
 		width: 100%;
 	}
+
+    div.supapress #isbn-grid.per-row-6 > div:nth-child(2n+1),
+    div.supapress #isbn-grid.per-row-4 > div:nth-child(2n+1),
+    div.supapress #isbn-grid.per-row-3 > div:nth-child(2n+1),
+    div.supapress #isbn-grid.per-row-2 > div:nth-child(2n+1) {
+        clear: none;
+    }
 
     div.supapress #isbn-grid > div:nth-child(1n+1) {
         clear: left;

@@ -55,7 +55,6 @@ class SupaPress_Widget {
 	}
 
 	public static function get_template( $args = '' ) {
-
 		$defaults = array( 'title' => '' );
 		$args = wp_parse_args( $args, $defaults );
 
@@ -155,7 +154,15 @@ class SupaPress_Widget {
 
 		$properties = wp_parse_args( $properties, array(
 			'widget_type' => array(),
-			'isbn_list' => array()
+			'isbn_list' => array(),
+            'per_row' => array(),
+			'order' => array(),
+			'show_title' => array(),
+			'show_price' => array(),
+			'show_format' => array(),
+			'show_author' => array(),
+			'show_pubdate' => array(),
+			'show_summary' => array(),
 		) );
 
 		$properties = (array) apply_filters( 'supapress_widget_properties', $properties, $this );
@@ -252,22 +259,22 @@ class SupaPress_Widget {
 	public function render() {
 		if($this->properties['widget_type'] === 'isbn_lookup') {
 			$service = 'search';
-			$params = array( 'isbns' => implode(',', $this->properties['isbn_list']) );
+			$params = array(
+				'isbns' => implode(',', $this->properties['isbn_list']),
+				'order' => $this->properties['order']
+			);
 		} else {
 			$service = 'search';
 			$params = array();
 		}
 
-		$result = callSupaFolio($service, $params);
+		$result = supapress_call_supafolio($service, $params, $this->properties);
 
 		if(is_string($result)) {
 			return "<p>$result</p>";
 		} else {
 			$html = '<div class="supapress">';
-			ob_start();
-			include_once SUPAPRESS_PLUGIN_DIR . '/views/isbn-lookup-grid.php';
-			$html .= ob_get_contents();
-			ob_end_clean();
+			$html .= supapress_render_isbn_lookup_grid($result, $this->properties);
 			$html .= '</div>';
 
 			return $html;

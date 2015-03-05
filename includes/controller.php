@@ -1,4 +1,7 @@
 <?php
+
+require_once SUPAPRESS_PLUGIN_DIR . '/includes/book.php';
+
 add_action( 'plugins_loaded', 'supapress_add_shortcodes' );
 
 function supapress_add_shortcodes() {
@@ -37,4 +40,5 @@ add_action( 'wp_enqueue_scripts', 'supapress_do_enqueue_scripts' );
 
 function supapress_do_enqueue_scripts() {
 	wp_enqueue_style( 'supapress', supapress_plugin_url( 'includes/css/styles.css' ), array(), SUPAPRESS_VERSION, 'all' );
+	wp_enqueue_script( 'supapress', supapress_plugin_url( 'includes/js/scripts.js' ), array( 'jquery' ), SUPAPRESS_VERSION, true );
 }

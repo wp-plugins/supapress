@@ -58,20 +58,25 @@ function supapress_settings() {
 
 function supapress_register_settings() {
 	register_setting( 'supapress-settings', 'api_key' );
+    register_setting( 'supapress-settings', 'no_books' );
 	register_setting( 'supapress-settings', 'service_url' );
 }
 
 function supapress_admin_updated_message() {
-	if ( empty( $_REQUEST['message'] ) )
+	if ( empty( $_REQUEST['message'] ) && empty( $_REQUEST['settings-updated'] ) )
 		return;
 
-	if ( 'created' == $_REQUEST['message'] ) {
+    if(!empty( $_REQUEST['settings-updated'] ) ) {
+        $updated_message = esc_html( 'SupaPress settings updated.' );
+    } elseif ( 'created' == $_REQUEST['message'] ) {
 		$updated_message = esc_html( 'SupaPress Widget created.' );
 	} elseif ( 'saved' == $_REQUEST['message'] ) {
 		$updated_message = esc_html( 'SupaPress Widget updated.' );
 	} elseif ( 'deleted' == $_REQUEST['message'] ) {
 		$updated_message = esc_html( 'SupaPress Widget deleted.' );
-	}
+	} elseif ( 'deleted' == $_REQUEST['message'] ) {
+        $updated_message = esc_html( 'SupaPress Widget deleted.' );
+    }
 
 	if ( empty( $updated_message ) )
 		return;

@@ -3,9 +3,6 @@
 class SupaPress_WidgetTemplate {
 
 	public static function get_default( $prop = null ) {
-
-		echo "$prop";
-
 		if ( $prop === 'isbn_list' ) {
 			$template = self::isbn_list();
 		} elseif( $prop === 'widget_type' ) {

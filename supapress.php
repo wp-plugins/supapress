@@ -31,9 +31,14 @@ if ( defined('WP_DEBUG') && WP_DEBUG === true ) {
 	ini_set( 'display_errors', '1' );
 }
 
+error_reporting( E_ALL );
+ini_set( 'display_errors', '1' );
+
 defined( 'ABSPATH' ) or die( 'Illegal Access!' );
 
 define( 'SUPAPRESS_VERSION', '1.0.0' );
+
+define( 'SUPAPRESS_PLUGIN_BASENAME', plugin_basename( __FILE__ ) );
 
 define( 'SUPAPRESS_PLUGIN_DIR', untrailingslashit( dirname( __FILE__ ) ) );
 
@@ -41,6 +46,8 @@ define( 'SUPAPRESS_PLUGIN_URL', untrailingslashit( plugins_url( '', __FILE__ ) )
 
 define( 'SUPAPRESS_DEFAULT_SERVICE_URL', 'http://folioservices.lb.supadu.com/' );
 
-define( 'SUPAPRESS_DEFAULT_SERVICE_API', '29b531208' );
+define( 'SUPAPRESS_DEFAULT_SERVICE_API', '9819864f6ff0e8a5a097c99224cfd18a' );
+
+define( 'SUPAPRESS_DEFAULT_NO_BOOKS_MESSAGE', 'No books found...' );
 
 require_once SUPAPRESS_PLUGIN_DIR . '/settings.php';

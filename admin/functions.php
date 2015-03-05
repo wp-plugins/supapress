@@ -39,3 +39,11 @@ function supapress_save_widget( $post_id = -1 ) {
 
 	return $widget->save();
 }
+
+function supapress_checked($properties, $key) {
+	return isset($properties[$key]) && $properties[$key] === 'on' ? ' checked="checked"' : '';
+}
+
+function supapress_selected($properties, $key, $value) {
+    return isset($properties[$key]) && $properties[$key] === (string) $value ? ' selected="selected"' : '';
+}

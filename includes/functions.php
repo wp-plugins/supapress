@@ -9,7 +9,7 @@ function supapress_register_post_types() {
 	}
 }
 
-function callSupaFolio($service, $params) {
+function supapress_call_supafolio($service, $params, $properties) {
 
 	if((string) get_option('service_url') !== '') {
 		$baseUrl = rtrim( get_option('service_url'), '/' ) . '/';
@@ -29,6 +29,10 @@ function callSupaFolio($service, $params) {
 		$url .= '?';
 
 		foreach( $params as $key => $value ) {
+            if($properties['widget_type'] === 'isbn_lookup' && $key === 'isbns' && trim( $value ) === '') {
+                return (string) get_option('no_books') !== '' ? get_option('no_books') : SUPAPRESS_DEFAULT_NO_BOOKS_MESSAGE;
+            }
+
 			$url .= "$key=$value&";
 		}
 
@@ -63,6 +67,8 @@ function callSupaFolio($service, $params) {
 			return "Something went wrong";
 		}
 	}
+
+	return "Something went wrong";
 }
 
 function supapress_plugin_url( $path = '' ) {
@@ -72,4 +78,33 @@ function supapress_plugin_url( $path = '' ) {
 		$url .= '/' . ltrim( $path, '/' );
 
 	return $url;
+}
+
+function supapress_render_isbn_lookup_grid($result, $properties) {
+	$supapress = new SupaPress_Book($result, $properties);
+	$html = "";
+    $perRow = "6";
+
+    if(isset($properties['per_row']) && trim( $properties['per_row'] ) !==  '') {
+        $perRow = trim( $properties['per_row'] );
+    }
+
+	if($supapress) {
+		$html = "<div id='isbn-grid' class='isbn-grid per-row-{$perRow}'>";
+
+		if ( substr_count( $_SERVER['HTTP_ACCEPT_ENCODING'], 'gzip' ) ) {
+			ob_start( "ob_gzhandler" );
+		} else {
+			ob_start();
+		}
+
+		include_once SUPAPRESS_PLUGIN_DIR . '/views/isbn-lookup-grid.php';
+
+		$html .= ob_get_contents();
+		$html .= '</div>';
+
+		ob_end_clean();
+	}
+
+	return $html;
 }

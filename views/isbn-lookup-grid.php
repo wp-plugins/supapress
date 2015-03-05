@@ -1,12 +1,34 @@
-<div id="isbn-grid">
-	<?php if($result->search === null) : ?>
-		<p>No books found...</p>
-	<?php else : ?>
-		<?php foreach($result->search as $book) : ?>
-			<div class="l-3 m-6 s-12">
-				<img src="<?php echo $book->image; ?>" alt="<?php echo $book->title; ?>" />
-				<p><?php echo $book->title; ?></p>
+<?php /** @type SupaPress_Book $supapress */ ?>
+
+<?php if($supapress->has_books()) : ?>
+
+	<?php while ( $supapress->has_books() ) : $supapress->the_book(); ?>
+
+		<div class="book-wrapper">
+			<div class="image-wrapper">
+				<?php $supapress->the_cover(); ?>
 			</div>
-		<?php endforeach; ?>
-	<?php endif; ?>
-</div>
+			<?php
+
+			$supapress->the_title();
+
+			$supapress->the_price();
+
+			$supapress->the_format();
+
+			$supapress->the_author();
+
+			$supapress->the_publication_date();
+
+			$supapress->the_summary();
+
+			?>
+		</div>
+
+	<?php endwhile;
+
+else :
+
+	$supapress->no_books();
+
+endif;
