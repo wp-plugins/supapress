@@ -4,7 +4,7 @@
  * Plugin URI: http://www.supadu.com
  * Description: Quickly and easily connect your WordPress site to your book data.
  * Version: 1.0.0
- * Author: Supadu
+ * Author: Supadü
  * Author URI: http://www.supadu.com
  * Text Domain: supapress
  * Domain Path: /languages/

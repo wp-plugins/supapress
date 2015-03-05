@@ -1,6 +1,6 @@
 === SupaPress ===
-Contributors: Supadu
-Tags: supadu, folio, books, publishers, onix, supafolio
+Contributors: Supadü
+Tags: supadü, supadu, folio, books, publishers, onix, supafolio
 Requires at least: 4.0
 Tested up to: 4.1
 Stable tag: 4.1
