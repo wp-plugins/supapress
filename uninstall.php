@@ -6,7 +6,9 @@ if ( ! defined( 'WP_UNINSTALL_PLUGIN' ) )
 function supapress_delete_plugin() {
 	global $wpdb;
 
-	delete_option( 'supapress-settings' );
+	delete_option( 'api_key' );
+	delete_option( 'no_books' );
+	delete_option( 'service_url' );
 
 	$posts = get_posts( array(
 		'numberposts' => -1,
