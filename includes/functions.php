@@ -92,11 +92,7 @@ function supapress_render_isbn_lookup_grid($result, $properties) {
 	if($supapress) {
 		$html = "<div id='isbn-grid' class='isbn-grid per-row-{$perRow}'>";
 
-		if ( substr_count( $_SERVER['HTTP_ACCEPT_ENCODING'], 'gzip' ) ) {
-			ob_start( "ob_gzhandler" );
-		} else {
-			ob_start();
-		}
+		ob_start();
 
 		include_once SUPAPRESS_PLUGIN_DIR . '/views/isbn-lookup-grid.php';
 
