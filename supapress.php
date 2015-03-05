@@ -2,7 +2,7 @@
 /**
  * Plugin Name: SupaPress
  * Plugin URI: http://www.supadu.com
- * Description: Quickly and easily connect your WordPress site to your book data.
+ * Description: Quickly and easily connect your book metadata (ONIX) to your WordPress site.
  * Version: 1.0.0
  * Author: Supadü
  * Author URI: http://www.supadu.com
