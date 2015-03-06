@@ -18,7 +18,7 @@
         <div>
             <h4>Please enter your list of ISBNs</h4>
             <p><label for="isbn_list">ISBN List:</label></p>
-            <textarea name="per_row" id="isbn_list" rows="8" cols="80"><?php echo implode( "\n", $properties['isbn_list']); ?></textarea>
+            <textarea name="isbn_list" id="isbn_list" rows="8" cols="80"><?php echo implode( "\n", $properties['isbn_list']); ?></textarea>
         </div>
         <div>
             <h4>Please choose how many to display per row</h4>
